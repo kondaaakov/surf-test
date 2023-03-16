@@ -1,0 +1,184 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+a {
+    color: #5454ff;
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+
+a:hover {
+    opacity: 0.8;
+}
+
+a:active {
+    opacity: 0.5;
+}
+
+main {
+    margin-bottom: 2rem;
+}
+
+.center {
+    padding: 0 30px;
+}
+
+header.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    margin-bottom: 2rem;
+}
+
+footer.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    height: 70px;
+}
+
+.logo {
+    font-weight: 600;
+    font-size: 1.4rem;
+}
+
+.header .logo {
+    color: black;
+}
+
+.footer .logo {
+    color: white;
+}
+
+.header-link {
+    padding: 10px;
+}
+
+.hello-message {
+    font-size: 2rem;
+    font-weight: 200;
+}
+
+.spots-first {
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.spots-first .section-link {
+    background: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 100px;
+    border: 1px solid transparent;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 100;
+}
+
+.spotsForm, main.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('/public/images/login-bg.webp');
+    background-size: cover;
+}
+
+main.login {
+    height: 100vh;
+}
+
+.login-container, .spotsForm-container {
+    padding: 30px 40px;
+    background-color: #fff;
+}
+
+.login-title, .spotsForm-title {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.login-form, .spotsForm-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.login-form-input, .spotsForm-input {
+    min-width: 300px;
+    border: 1px solid gainsboro;
+    padding: 10px 15px;
+    outline: none;
+    margin-bottom: 2rem;
+}
+
+.login-form-label {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 200;
+}
+
+.login-form-btn, .spotsForm-btn {
+    background: #333;
+    color: #fff;
+    padding: 10px 50px;
+    border-radius: 100px;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.spots-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    -ms-grid-rows: 500px;
+    grid-auto-rows: 500px;
+    gap: 2rem;
+    grid-auto-flow: row;
+}
+
+.spot {
+    padding: 30px;
+    border-radius: 30px;
+    box-shadow: 0 10px 20px rgb(0 0 0 / 10%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.spot-title {
+    font-size: 1.8rem;
+    font-weight: 200;
+    margin-bottom: 1rem;
+}
+
+.spot-header {
+    margin-bottom: 2rem;
+}
+
+.spot-location {
+    font-size: 0.9rem;
+    color: #808080;
+}
+
+.spot-mark {
+    color: #808080;
+    font-weight: 200;
+    text-align: right;
+}
+
+.spot-int {
+    color: black;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
