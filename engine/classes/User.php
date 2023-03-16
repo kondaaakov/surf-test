@@ -3,9 +3,9 @@
 namespace classes;
 
 use DateTime;
+use DB;
 
 class User {
-    public DB $db;
     private int $id;
     private string $surname;
     private string $name;
@@ -15,7 +15,7 @@ class User {
     private string $groupCode;
 
     public function __construct() {
-        $this->db = new DB(DB_SETTINGS);
+
     }
 
     public function authorization($mail, $password) : bool {
@@ -51,7 +51,7 @@ class User {
 
     private function getUserByMail(string $mail) {
         if (!empty($mail)) {
-            $user = $this->db->get('users', 'users.*, users_groups.code as group_code', [
+            $user = DB::select('users', 'users.*, users_groups.code as group_code', [
                 'where' => ["users.mail = '$mail'"],
                 'join' => 'users_groups on users_groups.id = users.group_id',
             ]);

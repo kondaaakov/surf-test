@@ -1,1 +1,0 @@
-[15:48:49] error: (You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '@admin.ru' at line 1) SELECT * FROM users   WHERE mail = admin@admin.ru 

@@ -66,14 +66,14 @@ footer.footer {
     font-weight: 200;
 }
 
-.spots-first {
+.spots-first, .users-first {
     margin-bottom: 3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.spots-first .section-link {
+.spots-first .section-link, .users-first .section-link {
     background: #333;
     color: #fff;
     padding: 10px 20px;
@@ -163,7 +163,19 @@ main.login {
 }
 
 .spot-header {
+    display: flex;
+    justify-content: space-between;
     margin-bottom: 2rem;
+}
+
+.spot-header-right {
+    font-size: 2rem;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+}
+
+.spot:hover .spot-header-right {
+    opacity: 1;
 }
 
 .spot-location {

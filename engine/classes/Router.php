@@ -13,7 +13,7 @@ class Router {
     }
 
     public function route(string $default) {
-        $uriArr = array_values(array_filter(explode('/', explode('?', $_SERVER['REQUEST_URI'])[0]), fn($it) => boolval($it))) ;
+        $uriArr = array_values(array_filter(explode('/', explode('?', $_SERVER['REQUEST_URI'])[0]), fn($it) => boolval($it)));
 
         $currentAction = $this->arrayHelper->arrayGet($uriArr, 0, $default);
 
@@ -39,8 +39,19 @@ class Router {
 
     public function abort($code, $message) {
         http_response_code($code);
+        header("Location: /", true, $code);
         require(LAYOUTS_PATH . 'error.layout.php');
         exit;
+    }
+
+    public function getId() {
+        $uriArr = array_values(array_filter(explode('/', explode('?', $_SERVER['REQUEST_URI'])[0]), fn($it) => boolval($it)));
+
+        if (isset($uriArr[2]) && !empty($uriArr[2]) && is_numeric($uriArr[2])) {
+            return $uriArr[2];
+        } else {
+            $this->abort('400', 'Bad Request');
+        }
     }
 
     public function view($page, $data) {

@@ -2,7 +2,6 @@
 
 use classes\Router;
 use classes\ArrayHelper;
-use classes\DB;
 use classes\User;
 
 const DOCROOT = __DIR__ . DIRECTORY_SEPARATOR;
@@ -12,7 +11,9 @@ session_start([
     'cookie_lifetime' => 86400,
 ]);
 
-$db     = new DB(DB_SETTINGS);
+
+DB::config(DB_SETTINGS['host'], DB_SETTINGS['port'], DB_SETTINGS['user'], DB_SETTINGS['password'], DB_SETTINGS['name']);
+
 $arrays = new ArrayHelper();
 $route  = new Router();
 $user   = new User();
