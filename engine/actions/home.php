@@ -13,6 +13,20 @@ $user   = new User();
 $home  = $user->getGroupSession() === 'ADMIN' ? 'home.admin' : 'home.user';
 $title = 'Главная';
 
-$content = $router->view($home, ['pages' => $pages]);
+$variables = ['pages' => $pages];
+
+if ($user->getGroupSession() === 'ADMIN') {
+    $reviews = DB::getAllReviews();
+    $groupsVariables['reviews'] = $reviews;
+
+    $variables = array_merge($variables, $groupsVariables);
+} else {
+    $spots = DB::getAllSpots();
+    $groupsVariables['spots'] = $spots;
+
+    $variables = array_merge($variables, $groupsVariables);
+}
+
+$content = $router->view($home, $variables);
 
 require LAYOUTS_PATH . 'main.layout.php';

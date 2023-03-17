@@ -31,12 +31,13 @@ class User {
             $this->setGroup($user['group_code']);
 
             $_SESSION['user'] = [
-                'name' => $this->getName(),
-                'surname' => $this->getSurname(),
-                'patronymic' => $this->getPatronymic(),
+                'id'          => $this->getId(),
+                'name'        => $this->getName(),
+                'surname'     => $this->getSurname(),
+                'patronymic'  => $this->getPatronymic(),
                 'createdDate' => $this->getCreatedDate(),
-                'mail' => $this->getMail(),
-                'group' => $this->getGroup()
+                'mail'        => $this->getMail(),
+                'group'       => $this->getGroup()
             ];
 
             return true;
@@ -67,6 +68,10 @@ class User {
 
     public function getId() {
         return $this->id ?? null;
+    }
+
+    public function getIdSession() : int {
+        return $_SESSION['user']['id'] ?? 0;
     }
 
     private function setName(string $name) {

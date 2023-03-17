@@ -1,17 +1,28 @@
 <?php
 
+use classes\PageHelper;
 use classes\Router;
 use classes\User;
 
 $router = new Router();
 $user   = new User();
+$pages  = new PageHelper();
 
-$title = 'Кофейни';
+if (isset($_GET['by_spot']) && !empty($_GET['by_spot'])) {
+    $spot = DB::getOneSpot($_GET['by_spot']);
+    $title = "Спот Surf Coffee® x {$spot['name']}";
 
-$spots = DB::select('spots', 'spots.*, spots_cities.title_ru AS city, spots_countries.title_ru AS country', [
-    'join' => 'spots_cities ON spots_cities.id = spots.city_id LEFT JOIN spots_countries ON spots_countries.id = spots_cities.country_id'
-]);
+    $reviews = DB::getReviewsBySpot($spot['id']);
+    $spots = DB::getAllSpotsForSelect();
 
-$content = $router->view('spots/spots', ['spots' => $spots]);
+    $content = $router->view('spots/spot', ['spot' => $spot, 'spots' => $spots, 'reviews' => $reviews, 'pages' => $pages]);
+} else {
+    $title = 'Кофейни';
+    $spots = DB::getAllSpots();
+
+    $content = $router->view('spots/spots', ['spots' => $spots, 'pages' => $pages]);
+}
+
+
 
 require LAYOUTS_PATH . 'main.layout.php';

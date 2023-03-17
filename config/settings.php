@@ -18,6 +18,7 @@ const TITLE = 'Surf Coffee Panel';
 
 require CFG_PATH   . 'DBconfig.php';
 require CFG_PATH   . 'permissions.php';
+require CFG_PATH   . 'questions.php';
 require CLASS_PATH . 'DB.php';
 require CLASS_PATH . 'Log.php';
 require CLASS_PATH . 'User.php';

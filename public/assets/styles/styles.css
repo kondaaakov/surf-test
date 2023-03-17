@@ -20,12 +20,16 @@ a:active {
     opacity: 0.5;
 }
 
-main {
-    margin-bottom: 2rem;
-}
+
 
 .center {
-    padding: 0 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+main {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
 }
 
 header.header {
@@ -33,7 +37,6 @@ header.header {
     justify-content: space-between;
     align-items: center;
     height: 70px;
-    margin-bottom: 2rem;
 }
 
 footer.footer {
@@ -66,14 +69,14 @@ footer.footer {
     font-weight: 200;
 }
 
-.spots-first, .users-first {
+.spots-first, .users-first, .reviews-first, .adminHome-first {
     margin-bottom: 3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.spots-first .section-link, .users-first .section-link {
+.spots-first .section-link, .users-first .section-link, .filter-start {
     background: #333;
     color: #fff;
     padding: 10px 20px;
@@ -81,12 +84,44 @@ footer.footer {
     border: 1px solid transparent;
 }
 
+.filter {
+    margin-bottom: 4rem;
+}
+
+.filter-select {
+    min-width: 300px;
+    border: 1px solid gainsboro;
+    padding: 10px 15px;
+    outline: none;
+}
+
+.filter-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.filter-start {
+    margin-right: 1rem;
+}
+
 .section-title {
-    font-size: 2.5rem;
     font-weight: 100;
 }
 
-.spotsForm, main.login {
+h1.section-title {
+    font-size: 2.8rem;
+}
+
+h2.section-title {
+    font-size: 2.5rem;
+}
+
+h3.section-title {
+    font-size: 2.2rem;
+}
+
+.spotsForm, main.login, .basicForm {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -98,24 +133,24 @@ main.login {
     height: 100vh;
 }
 
-.login-container, .spotsForm-container {
+.login-container, .spotsForm-container, .basicForm-container {
     padding: 30px 40px;
     background-color: #fff;
 }
 
-.login-title, .spotsForm-title {
+.login-title, .spotsForm-title, .basicForm-title {
     font-size: 1.5rem;
     margin-bottom: 2rem;
     text-align: center;
 }
 
-.login-form, .spotsForm-form {
+.login-form, .spotsForm-form, .basicForm-form {
     display: flex;
     flex-direction: column;
     width: 100%;
 }
 
-.login-form-input, .spotsForm-input {
+.login-form-input, .spotsForm-input, .basicForm-input {
     min-width: 300px;
     border: 1px solid gainsboro;
     padding: 10px 15px;
@@ -123,13 +158,28 @@ main.login {
     margin-bottom: 2rem;
 }
 
-.login-form-label {
+.login-form-label, .basicForm-label {
     font-size: 1.1rem;
     margin-bottom: 0.5rem;
+    line-height: 1.8rem;
     font-weight: 200;
 }
 
-.login-form-btn, .spotsForm-btn {
+.basicForm-form-title {
+    margin-top: 4rem;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-weight: 100;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid gainsboro;
+}
+
+.basicForm-form-title:first-child {
+    margin-top: 0;
+}
+
+.login-form-btn, .spotsForm-btn, .basicForm-btn {
     background: #333;
     color: #fff;
     padding: 10px 50px;
@@ -141,8 +191,8 @@ main.login {
 .spots-list {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    -ms-grid-rows: 500px;
-    grid-auto-rows: 500px;
+    -ms-grid-rows: 300px;
+    grid-auto-rows: 300px;
     gap: 2rem;
     grid-auto-flow: row;
 }
@@ -189,8 +239,239 @@ main.login {
     text-align: right;
 }
 
-.spot-int {
-    color: black;
+.spot-mark .avg-spot {
     font-size: 1.5rem;
     font-weight: 600;
+}
+
+.table {
+    border-collapse: collapse;
+}
+
+.table-head, .table-cell {
+    padding: 10px 15px;
+    border-right: 1px solid #dcdcdc;
+}
+
+.table-head:first-child, .table-cell:first-child {
+    border-left: 1px solid #dcdcdc;
+}
+
+.table-head {
+    text-align: center;
+    border-bottom: 2px solid #838383;
+}
+
+.table-cell {
+    border-bottom: 1px solid #838383;
+}
+
+.table-row-not-head:hover {
+    background-color: #f1f1f1;
+}
+
+.table-link-action {
+    padding: 0 10px;
+}
+
+.table-link-action:hover {
+    opacity: 0.8;
+}
+
+.userHome-first {
+    margin-bottom: 2rem;
+}
+
+.userHome-second .section-title {
+    margin-bottom: 1rem;
+}
+
+.userHome-second-spots {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.userHome-second-spot {
+    color: black;
+    border-radius: 15px;
+    padding: 10px 15px;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,.04),0 0 4px rgba(0,0,0,.06);
+}
+
+.userHome-second-spot:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,10%),0 0 4px rgba(0,0,0,12%);
+}
+
+.spot-reviews {
+    margin-bottom: 4rem;
+}
+
+.spot-reviews .section-title, .spot-avg .section-title, .adminHome-reviews .section-title {
+    margin-bottom: 2rem;
+}
+
+.spot-chart {
+    max-height: 500px;
+    display: flex;
+    justify-content: center;
+}
+
+.spot-avg {
+    margin-bottom: 4rem;
+}
+
+.spot-avg-container .avg-spot {
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.avg-red {
+    color: #ff5858;
+}
+.avg-yellow {
+    color: #ffde58;
+}
+.avg-green {
+    color: #56bd45;
+}
+.avg-null {
+    color: black;
+}
+
+.show-header {
+    margin-bottom: 3rem;
+}
+
+.showData-table {
+    border-collapse: collapse;
+}
+
+.showData-title, .showData-data {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid gainsboro;
+}
+
+.showData-row:hover {
+    background-color: #f1f1f1;
+}
+
+.showData-title {
+    text-align: right;
+}
+
+.showData-data {
+    padding-left: 3rem;
+    padding-right: 1rem;
+}
+
+.showData-data .avg-spot {
+    font-weight: 700;
+}
+
+.inShowData-table-title {
+    margin-bottom: 1rem;
+}
+
+.inShowData-table {
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+}
+
+.inShowData-table:last-child {
+    margin-bottom: 0;
+}
+
+.inShowData-title, .inShowData-data {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+
+}
+
+.inShowData-row {
+    border-bottom: 1px solid gainsboro;
+}
+
+
+.inShowData-title  {
+    max-width: 500px;
+}
+
+.inShowData-data {
+    padding-left: 2.5rem;
+    padding-right: 0.5rem;
+    font-weight: 600;
+}
+
+@media only screen and (max-width: 550px) {
+    * {
+        font-size: 14px;
+    }
+
+    .table-head, .table-cell {
+        padding: 5px 10px;
+    }
+
+    header.header {
+        flex-direction: column;
+        padding-top: 10px;
+        height: 90px;
+    }
+
+    .header-nav {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .header-link {
+        padding: 5px;
+        margin-bottom: 10px;
+    }
+
+    .adminHome-reviews, .spot-reviews, .users-list, .reviews-list {
+        overflow-x: auto;
+    }
+
+    .spots-first, .users-first, .reviews-first, .adminHome-first {
+        flex-direction: column;
+    }
+
+    h1.section-title {
+        margin-bottom: 1rem;
+    }
+
+    .center {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .filter-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .filter-form-body {
+        margin-bottom: 1rem;
+    }
+
+    .spots-list {
+        grid-template-columns: 1fr;
+        -ms-grid-rows: 245px;
+        grid-auto-rows: 245px;
+        gap: 4rem;
+        grid-auto-flow: row;
+    }
+
+    .table-cell-actions {
+        min-width: 150px;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    * {
+        font-size: 11px;
+    }
 }

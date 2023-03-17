@@ -1,11 +1,9 @@
-<main class="adminHome center">
-    <section class="adminHome-first">
-        <?= $pages->welcomeMessage() ?>
+<main class="reviews center">
+    <section class="reviews-first">
+        <h1 class="section-title"><?= $user->getGroupSession() === 'ADMIN' ? 'Проверки' : 'Мои проверки' ?></h1>
     </section>
 
-    <section class="adminHome-reviews">
-        <h2 class="section-title">Проверки</h2>
-
+    <section class="reviews-list">
         <table class="table">
             <thead>
             <tr class="table-row">
@@ -27,7 +25,7 @@
                     <td class="table-cell"><?= $pages->normalizeAvg($review['average']) ?></td>
                     <td class="table-cell table-cell-actions">
                         <a href="/reviews/edit/<?= $review['id'] ?>" title="Редактировать" class="table-link-action">✏️</a>
-                        <a href="/reviews/show/<?= $review['id'] ?>" title="Посмотреть" class="table-link-action">👁️</a>
+                        <a href="/reviews/show/<?= $review['id'] ?>" target="_blank" title="Посмотреть" class="table-link-action">👁️</a>
                         <a href="/reviews/delete/<?= $review['id'] ?>" title="Удалить" class="table-link-action">🗑️</a>
                     </td>
                 </tr>

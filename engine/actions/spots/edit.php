@@ -34,6 +34,6 @@ $cities = DB::select('spots_cities', 'spots_cities.id as id, concat(spots_countr
     'join' => 'spots_countries on spots_cities.country_id = spots_countries.id'
 ]);
 
-$content = $router->view('spots/edit', ['cities' => $cities, 'spot' => $spot]);
+$content = $router->view('spots/form', ['cities' => $cities, 'spot' => $spot]);
 
 require LAYOUTS_PATH . 'main.layout.php';

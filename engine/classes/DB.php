@@ -516,4 +516,95 @@ class DB
 
         return self::$_instance;
     }
+
+    public static function getAllSpots() : array {
+        return DB::select('spots', 'spots.*, spots_cities.title_ru AS city, spots_countries.title_ru AS country', [
+            'join' => 'spots_cities ON spots_cities.id = spots.city_id LEFT JOIN spots_countries ON spots_countries.id = spots_cities.country_id'
+        ]);
+    }
+
+    public static function getAllSpotsForSelect() : array {
+        return DB::select('spots', 'id, name');
+    }
+
+    public static function getOneSpot($id) : array {
+        $spot = DB::select('spots', 'spots.*, spots_cities.title_ru AS city, spots_countries.title_ru AS country', [
+            'where' => ["spots.id = $id"],
+            'join'  => 'spots_cities ON spots_cities.id = spots.city_id LEFT JOIN spots_countries ON spots_countries.id = spots_cities.country_id'
+        ]);
+
+        return $spot[0];
+    }
+
+    public static function getAvgSpot($id) {
+        $avg = DB::getValue(
+            'reviews',
+            'AVG(ROUND(((reviews.question_1 + reviews.question_2 + reviews.question_3 + reviews.question_4 + reviews.question_5 + reviews.question_6 + reviews.question_7) / 7), 1))',
+            ['where' => ["spot_id = $id"]]
+        );
+
+        if (!$avg) {
+            return 0;
+        } else {
+            return round($avg, 1);
+        }
+    }
+
+    public static function getAllReviews() : array {
+        return DB::select(
+            'reviews',
+            'reviews.*, spots.name, ((reviews.question_1 + reviews.question_2 + reviews.question_3 + reviews.question_4 + reviews.question_5 + reviews.question_6 + reviews.question_7) / 7) AS average',
+            ['join' => 'spots on spots.id = reviews.spot_id']
+        );
+    }
+
+    public static function getOneReview($id) : array {
+        $review = DB::select(
+            'reviews',
+            'reviews.*, spots.name, ((reviews.question_1 + reviews.question_2 + reviews.question_3 + reviews.question_4 + reviews.question_5 + reviews.question_6 + reviews.question_7) / 7) AS average',
+            [
+                'where' => ["reviews.id = $id"],
+                'join'  => 'spots on spots.id = reviews.spot_id'
+            ]
+        );
+
+        return $review[0];
+    }
+
+    public static function getReviewsByUser($id) : array {
+        return DB::select(
+            'reviews',
+            'reviews.*, spots.name, round(((reviews.question_1 + reviews.question_2 + reviews.question_3 + reviews.question_4 + reviews.question_5 + reviews.question_6 + reviews.question_7) / 7), 1) AS average',
+            [
+                'where' => ["reviews.user_id = $id"],
+                'join'  => 'spots on spots.id = reviews.spot_id'
+            ]
+        );
+    }
+
+    public static function getReviewsBySpot($id) : array {
+        return DB::select(
+            'reviews',
+            'reviews.*, spots.name, round(((reviews.question_1 + reviews.question_2 + reviews.question_3 + reviews.question_4 + reviews.question_5 + reviews.question_6 + reviews.question_7) / 7), 1) AS average',
+            [
+                'where' => ["reviews.spot_id = $id"],
+                'join'  => 'spots on spots.id = reviews.spot_id',
+                'order' => 'reviews.id desc'
+            ]
+        );
+    }
+
+    public static function getFullNameUser($id) : string {
+        $fullname = DB::select('users', 'surname, name, patronymic', ['where' => ["id = $id"]]);
+
+        if (empty($fullname)) {
+            return 'Нет данных';
+        }
+
+        $surname = $fullname[0]['surname'] ?? '';
+        $name = $fullname[0]['name'] ?? '';
+        $patronymic = $fullname[0]['patronymic'] ?? '';
+
+        return "$surname $name $patronymic";
+    }
 }
