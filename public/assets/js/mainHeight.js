@@ -12,7 +12,7 @@ console.log("Padding" + mainPadding)
 
 let windowHeight = $(window).height();
 
-if (mainElement.outerHeight(true) < windowHeight) {
+if ((mainElement.outerHeight(true) + mainPadding) < windowHeight) {
     mainElement.css({
         'min-height': (windowHeight - headerHeight - footerHeight - mainMargin) + 'px'
     });
